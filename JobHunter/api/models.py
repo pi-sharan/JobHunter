@@ -28,10 +28,11 @@ class JobApplicant(models.Model):
         (NO, 'No'),
     )
 
+    major = models.CharField(max_length=100) 
     degree_type = models.CharField(max_length=20, choices=DEGREE_CHOICES)
     work_history_count = models.PositiveIntegerField()
     total_years_experience = models.FloatField()
     currently_employed = models.CharField(max_length=3, choices=CURRENTLY_EMPLOYED_CHOICES)
     managed_others = models.CharField(max_length=3, choices=CURRENTLY_EMPLOYED_CHOICES)
     managed_how_many = models.PositiveIntegerField()
-    workexp = models.JSONField(default=list)
+    # workexp = models.JSONField(default=list)
