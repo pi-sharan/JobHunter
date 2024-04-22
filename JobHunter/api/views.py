@@ -37,6 +37,7 @@ def recommend(request):
             input_data_list = [input_data[field] for field in ['degree_type', 'work_history_count', 
                                                                'total_years_experience', 'currently_employed',
                                                                'managed_others', 'managed_how_many']]
+            input_data_list.extend(input_data['workexp'])
             input_data_as_numpy_array = np.asarray(input_data_list)
             input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
             # Print the input data to the console
