@@ -85,6 +85,7 @@ def getTop20Jobs(jobSet, userProfile, past_work_ex, city, state):
         X = np.concatenate((X, feature), axis=0)
 
     # Finally, we rank all of them based on the probabilities of model prediction
+    
 
 
 
