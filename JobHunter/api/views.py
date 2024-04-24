@@ -94,7 +94,13 @@ def getTop20Jobs(jobSet, userProfile, past_work_ex, city, state):
 @api_view(['POST'])
 def recommend(request):
     if request.method == 'POST':
+        print(request.headers)
+        print(request.body)
+        print(request.POST)
+        # print(request.headers)
+        # print(request.headers)
         serializer = JobApplicantSerializer(data=request.data)
+        # print('Valid',serializer.is_valid())
         if serializer.is_valid():
             # Convert input data to input format for model
             input_data = serializer.validated_data
@@ -120,20 +126,12 @@ def recommend(request):
             input_data_tf_idf_degree = degree + ' ' + input_data['major'] + ' ' + str(input_data['yearsOfExp'])
             input_data_transformed = tfidf_vectorizer.transform([input_data_tf_idf_degree])
 
-            # print("Shape of transformed data is: ", input_data_transformed.shape)
-            # print("Shape of matrix data is: ", tfidf_matrix.shape)
-
-
             cosine_similarities = cosine_similarity(input_data_transformed, tfidf_matrix)
             top_similar_users_indices = cosine_similarities.flatten().argsort()[::-1][:10]
             most_similar_user = users.iloc[top_similar_users_indices]
 
-            # print("Most similar user:")
-            # print(most_similar_user['UserID'].values)
-
             # Get the top 100 jobs that similar users have applied in
             top_jobs = getTopJobs(most_similar_user['UserID'].values)
-            # print(len(top_jobs))
 
             # Now, re-rank the above 100 jobs and recommend the Top 20
             top20Jobs = getTop20Jobs(top_jobs, input_data_list, input_data['workHistory'], input_data['city'], input_data['state'])
