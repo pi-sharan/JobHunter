@@ -1,2 +1,6 @@
 input_data/
 *.csv
+*.npy
+*.pkl
+*.pt
+*.model

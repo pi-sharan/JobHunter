@@ -85,7 +85,7 @@ def getTop20Jobs(jobSet, userProfile, past_work_ex, city, state):
         X = np.concatenate((X, feature), axis=0)
 
     # Finally, we rank all of them based on the probabilities of model prediction
-    
+    return X
 
 
 
@@ -94,15 +94,14 @@ def getTop20Jobs(jobSet, userProfile, past_work_ex, city, state):
 @api_view(['POST'])
 def recommend(request):
     if request.method == 'POST':
-        # Deserialize the input data from the request
         serializer = JobApplicantSerializer(data=request.data)
         if serializer.is_valid():
             # Convert input data to input format for model
             input_data = serializer.validated_data
             # Convert categorical values to numerical values
-            input_data['currently_employed'] = 1 if input_data['currently_employed'] == 'Yes' else 0
-            input_data['managed_others'] = 1 if input_data['managed_others'] == 'Yes' else 0
-            degree_type_mapping = {
+            input_data['currentlyEmployed'] = 1 if input_data['currentlyEmployed'] == 'Yes' else 0
+            input_data['managedOthers'] = 1 if input_data['managedOthers'] == 'Yes' else 0
+            degree_mapping = {
                 'None': 0,
                 'High School': 1,
                 'Vocational': 2,
@@ -111,16 +110,14 @@ def recommend(request):
                 'Master\'s': 5,
                 'PhD': 6
             }
-            input_data_degree_notencoded = input_data['degree_type']
-            input_data['degree_type'] = degree_type_mapping.get(input_data['degree_type'], 0)  
+            degree = input_data['degree']
+            input_data['degree'] = degree_mapping.get(input_data['degree'], 0)  
 
-            input_data_list = [input_data[field] for field in ['degree_type', 'work_history_count', 
-                                                               'total_years_experience', 'currently_employed',
-                                                               'managed_others', 'managed_how_many']]
+            input_data_list = [input_data[field] for field in ['degree', 'workHistoryCount', 
+                                                               'yearsOfExp', 'currentlyEmployed',
+                                                               'managedOthers', 'managedHowMany']]
             
-            input_data_as_numpy_array = np.asarray(input_data_list)
-            input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
-            input_data_tf_idf_degree = input_data_degree_notencoded + ' ' + input_data['major'] + ' ' + str(input_data['total_years_experience'])
+            input_data_tf_idf_degree = degree + ' ' + input_data['major'] + ' ' + str(input_data['yearsOfExp'])
             input_data_transformed = tfidf_vectorizer.transform([input_data_tf_idf_degree])
 
             # print("Shape of transformed data is: ", input_data_transformed.shape)
@@ -139,8 +136,8 @@ def recommend(request):
             # print(len(top_jobs))
 
             # Now, re-rank the above 100 jobs and recommend the Top 20
-            top20Jobs = getTop20Jobs(top_jobs, input_data_list, input_data['past_work_ex'], input_data['city'], input_data['state'])
-
+            top20Jobs = getTop20Jobs(top_jobs, input_data_list, input_data['workHistory'], input_data['city'], input_data['state'])
+            print(top20Jobs)
 
 
 
