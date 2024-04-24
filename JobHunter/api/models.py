@@ -35,6 +35,7 @@ class JobApplicant(models.Model):
     currently_employed = models.CharField(max_length=3, choices=CURRENTLY_EMPLOYED_CHOICES)
     managed_others = models.CharField(max_length=3, choices=CURRENTLY_EMPLOYED_CHOICES)
     managed_how_many = models.PositiveIntegerField()
+    # TODO Confirm if this a list or a single value
     past_work_ex = models.CharField(max_length=500)
-    city = models.CharField(max_length=10)
+    city = models.CharField(max_length=100)
     state = models.CharField(max_length=2)

@@ -83,11 +83,9 @@ def getTop20Jobs(jobSet, userProfile, past_work_ex, city, state):
 
         feature = feature.reshape(1,158)
         X = np.concatenate((X, feature), axis=0)
+    return X
 
     # Finally, we rank all of them based on the probabilities of model prediction
-    
-
-
 
 
 # Add City and State and Major too.
@@ -133,20 +131,18 @@ def recommend(request):
 
             # print("Most similar user:")
             # print(most_similar_user['UserID'].values)
-
+ 
             # Get the top 100 jobs that similar users have applied in
             top_jobs = getTopJobs(most_similar_user['UserID'].values)
-            # print(len(top_jobs))
+            print(len(top_jobs))
 
             # Now, re-rank the above 100 jobs and recommend the Top 20
             top20Jobs = getTop20Jobs(top_jobs, input_data_list, input_data['past_work_ex'], input_data['city'], input_data['state'])
 
+            prediction = model.predict(top20Jobs)
+            # print(prediction)
 
-
-
-
-
-
+            # TODO: How to get the job ids and how to show on the UI
 
             return Response({'predicted_cost'}) 
         else:
