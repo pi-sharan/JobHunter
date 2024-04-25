@@ -150,9 +150,10 @@ def recommend(request):
             for job_id, prediction_value in sorted_job_predictions.items():
                 if job_id in jobs['JobID'].values:
 
+                    job_title = jobs[jobs['JobID'] == job_id]['Title'].values[0]
                     job_description = jobs[jobs['JobID'] == job_id]['DescCleaned'].values[0]
                   
-                    recommended_jobs.append({'job_id': job_id, 'job_description': job_description})
+                    recommended_jobs.append({'job_id': job_id, 'job_title':job_title, 'job_description': job_description})
                 else:
                     print(f"Job ID {job_id} not found in the jobs dataset.")
 
