@@ -12,5 +12,5 @@ class JobApplicant(models.Model):
     currentlyEmployed = models.CharField(max_length=3)
     managedOthers = models.CharField(max_length=3)
     workHistory = models.CharField(max_length=500)
-    city = models.CharField(max_length=10)
+    city = models.CharField(max_length=100)
     state = models.CharField(max_length=2)
