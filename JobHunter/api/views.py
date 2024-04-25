@@ -54,7 +54,7 @@ def getTopJobs(userIds):
     
     return jobsSet
 
-def getTop20Jobs(jobSet, userProfile, past_work_ex, city, state):
+def getTop100Jobs(jobSet, userProfile, past_work_ex, city, state):
     # Firstly, we create the user_profile to training_data form
     user_feature = np.array(userProfile)
     work_ex_transform = work_history_vectorizer.transform([past_work_ex])
@@ -129,9 +129,9 @@ def recommend(request):
             top_jobs = getTopJobs(most_similar_user['UserID'].values)
 
             # Now, re-rank the above 100 jobs and recommend the Top 20
-            top20Jobs = getTop20Jobs(top_jobs, input_data_list, input_data['workHistory'], input_data['city'], input_data['state'])
+            top100Jobs = getTop100Jobs(top_jobs, input_data_list, input_data['workHistory'], input_data['city'], input_data['state'])
 
-            prediction = model.predict(top20Jobs)
+            prediction = model.predict(top100Jobs)
 
             top_jobs_list = list(top_jobs)
             job_predictions = {}
@@ -155,6 +155,9 @@ def recommend(request):
                     recommended_jobs.append({'job_id': job_id, 'job_description': job_description})
                 else:
                     print(f"Job ID {job_id} not found in the jobs dataset.")
+
+                if (len(recommended_jobs) >= 20):
+                    break
 
             return Response({'recommended_jobs': recommended_jobs}) 
         else:

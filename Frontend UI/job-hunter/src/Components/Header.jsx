@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <header style={{ backgroundColor: '#f0f0f0', padding: '1rem', marginBottom: '1rem', textAlign: 'center' }}>
+    <header style={{ backgroundColor: '#f0f0f0', padding: '1rem', marginBottom: '100px', textAlign: 'center' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <img src="../logo.svg" alt="JobHunter Logo" style={{ width: '50px', marginRight: '1rem' }} />
         <h1 style={{ margin: 0 }}>JobHunter</h1>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -13,6 +14,7 @@ const Form = () => {
   const [managedHowMany, setManagedHowMany] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
+  const navigate = useNavigate();
 
 
   const handleAddExperience = () => {
@@ -57,7 +59,10 @@ const Form = () => {
     );
   
 
-    console.log(response);
+    console.log(response.data['recommended_jobs'][0]);
+
+    // history.push({pathname: '/jobs',  })
+    navigate('/jobs', { state: { jobData: response.data } });
   };
 
   return (
@@ -139,6 +144,7 @@ const Form = () => {
           required
           style={{ width: '100%', padding: '0.5rem' }}
         >
+          <option value="">Select</option>
           <option value="Yes">Yes</option>
           <option value="No">No</option>
         </select>
