@@ -94,11 +94,6 @@ def getTop20Jobs(jobSet, userProfile, past_work_ex, city, state):
 @api_view(['POST'])
 def recommend(request):
     if request.method == 'POST':
-        print(request.headers)
-        print(request.body)
-        print(request.POST)
-        # print(request.headers)
-        # print(request.headers)
         serializer = JobApplicantSerializer(data=request.data)
         # print('Valid',serializer.is_valid())
         if serializer.is_valid():

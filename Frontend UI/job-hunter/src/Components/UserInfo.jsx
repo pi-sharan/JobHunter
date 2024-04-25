@@ -49,9 +49,12 @@ const Form = () => {
     console.log(JSON.stringify(formData));
 
     // Make POST request to Django API
-    const response = await axios.post('http://127.0.0.1:8000/api/recommend/', {}, {
-      body: JSON.stringify(formData),
-    });
+    const response = await axios.post('http://127.0.0.1:8000/api/recommend/', JSON.stringify(formData), {
+      headers: {
+        'Content-Type': 'application/json' // specifying JSON content
+      }
+    },
+    );
   
 
     console.log(response);
