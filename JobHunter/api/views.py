@@ -133,29 +133,25 @@ def recommend(request):
 
             prediction = model.predict(top20Jobs)
 
-            # Convert set to list for iteration
             top_jobs_list = list(top_jobs)
-
-            # Initialize dictionary to store job predictions
             job_predictions = {}
 
             # Iterate over each job ID in top_jobs and corresponding prediction value
             for i, job_id in enumerate(top_jobs_list):
-                # Extract prediction value for current job ID
+                
                 prediction_value = prediction[i][0]
-                # Store job ID and prediction value in dictionary
+               
                 job_predictions[job_id] = prediction_value
-            # Sort job_predictions based on prediction values in descending order
+            
             sorted_job_predictions = dict(sorted(job_predictions.items(), key=lambda item: item[1], reverse=True))
 
             recommended_jobs = []
 
             for job_id, prediction_value in sorted_job_predictions.items():
-                # Check if job ID exists in 'jobs' DataFrame
                 if job_id in jobs['JobID'].values:
-                    # Retrieve job description based on job ID
+
                     job_description = jobs[jobs['JobID'] == job_id]['DescCleaned'].values[0]
-                    # Append job ID, job description, and prediction value to recommended_jobs list
+                  
                     recommended_jobs.append({'job_id': job_id, 'job_description': job_description})
                 else:
                     print(f"Job ID {job_id} not found in the jobs dataset.")
