@@ -1,0 +1,35 @@
+.jobs-container {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .jobs-heading {
+    margin-bottom: 20px;
+    color: #333; /* Dark gray color for heading */
+  }
+  
+  .jobs-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .job-item {
+    border: 1px solid #ccc; /* Gray border around each job item */
+    padding: 20px;
+    margin: 10px;
+    max-width: 1000px;
+    /* width: calc(100% - 20px); Take up full width minus margins */
+    /* max-width: 500px; Limit maximum width of each job item */
+    background-color: #f9f9f9; /* Light gray background color */
+    border-radius: 5px; /* Rounded corners */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .job-item p {
+    margin: 5px 0; /* Add some space between paragraphs */
+  }
+  
