@@ -1,2 +1,5 @@
 input_data/
 *.csv
+*.npy
+*.model
+*.pt
