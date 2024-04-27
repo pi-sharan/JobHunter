@@ -11,12 +11,10 @@ function App() {
   return (
     <div>
       <Header />
-      <Router>
         <Routes>
           <Route exact path="/" element={<HomePage/>} />
           <Route exact path="/jobs" element={<DisplayJobs/>} />
         </Routes>
-      </Router>
       <Footer teamMembers={[['Piyush Sharan', 'Manisha Panda'], ['Neha Manghnani', 'Janvita Reddy']]} />
     </div>
 

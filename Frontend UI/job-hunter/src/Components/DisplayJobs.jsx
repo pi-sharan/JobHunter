@@ -12,6 +12,7 @@ const DisplayJobs = () => {
             {jobData.map(job => (
             <div key={job.Job_id} className="job-item">
                 <p><strong>Job ID:</strong> {job.job_id}</p>
+                <p><strong>Job Title:</strong> {job.job_title}</p>
                 <p><strong>Job Description:</strong> {job.job_description.slice(0, 500)}</p>
             </div>
             ))}

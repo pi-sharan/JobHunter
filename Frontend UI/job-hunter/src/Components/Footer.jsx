@@ -29,13 +29,19 @@
 
 import React from 'react';
 import './styles.css';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = ({ teamMembers }) => {
+  const navigate = useNavigate();
+  
+  const handleOnclick = () => {
+    navigate('/');
+  }
   return (
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo-name">
-            <img src="../logo.svg" alt="JobHunter Logo" style={{ width: '50px', marginRight: '1rem' }} />
+            <img src={require('./logo.png')} alt="JobHunter Logo" style={{ width: '80px', marginRight: '1rem' }} onClick={handleOnclick}/>
             <h1>JobHunter</h1>
         </div>
         <div className="footer-team">
