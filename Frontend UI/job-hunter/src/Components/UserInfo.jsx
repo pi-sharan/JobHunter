@@ -68,7 +68,7 @@ const Form = () => {
   return (
     <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
       <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>Name:</label>
+        <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>Name</label>
         <input
           type="text"
           id="name"
@@ -79,7 +79,7 @@ const Form = () => {
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="degree" style={{ display: 'block', marginBottom: '0.5rem' }}>Highest Degree:</label>
+        <label htmlFor="degree" style={{ display: 'block', marginBottom: '0.5rem' }}>Highest Degree</label>
         <select
           id="degree"
           value={degree}
@@ -99,7 +99,7 @@ const Form = () => {
       </div>
 
       <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="major" style={{ display: 'block', marginBottom: '0.5rem' }}>major:</label>
+        <label htmlFor="major" style={{ display: 'block', marginBottom: '0.5rem' }}>Major</label>
         <input
           type="text"
           id="major"
@@ -124,9 +124,9 @@ const Form = () => {
       </div>
 
       <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="yearsOfExp" style={{ display: 'block', marginBottom: '0.5rem' }}>yearsOfExp:</label>
+        <label htmlFor="yearsOfExp" style={{ display: 'block', marginBottom: '0.5rem' }}>Years of Experience:</label>
         <input
-          type="number"
+          type="text"
           id="yearsOfExp"
           value={yearsOfExp}
           onChange={(e) => setYearsOfExp(e.target.value)}
@@ -136,7 +136,7 @@ const Form = () => {
       </div>
 
       <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="managedOthers" style={{ display: 'block', marginBottom: '0.5rem' }}>managedOthers:</label>
+        <label htmlFor="managedOthers" style={{ display: 'block', marginBottom: '0.5rem' }}>Have you managed others?</label>
         <select
           id="managedOthers"
           value={managedOthers}
@@ -151,9 +151,9 @@ const Form = () => {
       </div>
 
       <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="managedHowMany" style={{ display: 'block', marginBottom: '0.5rem' }}>managedHowMany:</label>
+        <label htmlFor="managedHowMany" style={{ display: 'block', marginBottom: '0.5rem' }}>Managed how many others?</label>
         <input
-          type="number"
+          type="text"
           id="managedHowMany"
           value={managedHowMany}
           onChange={(e) => setManagedHowMany(e.target.value)}
@@ -163,7 +163,7 @@ const Form = () => {
       </div>
 
       <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="City" style={{ display: 'block', marginBottom: '0.5rem' }}>City:</label>
+        <label htmlFor="City" style={{ display: 'block', marginBottom: '0.5rem' }}>City</label>
         <input
           type="text"
           id="City"
@@ -175,7 +175,7 @@ const Form = () => {
       </div>
 
       <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="State" style={{ display: 'block', marginBottom: '0.5rem' }}>State:</label>
+        <label htmlFor="State" style={{ display: 'block', marginBottom: '0.5rem' }}>State</label>
         <input
           type="text"
           id="State"
