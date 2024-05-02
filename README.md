@@ -51,11 +51,12 @@ This would open both Front-end and Backend on localhost.
 
 1. Go to [http://localhost:3000](http://localhost:3000) on your browser. It will show the following form - 
 
-![form](https://github.com/pi-sharan/JobHunter/assets/57253436/b659474f-eb38-4b9a-967a-75967cb145af)
+
+<img src="https://github.com/pi-sharan/JobHunter/assets/57253436/b659474f-eb38-4b9a-967a-75967cb145af" height="600">
 
 2. After filling in the required details press submit. It would lead you to the recommended jobs website.
 
-   ![results](https://github.com/pi-sharan/JobHunter/assets/57253436/20dd63d1-4003-45a2-b45d-90b58191fb4f)
+   <img src="https://github.com/pi-sharan/JobHunter/assets/57253436/20dd63d1-4003-45a2-b45d-90b58191fb4f" height="500">
 
 
 # Recommendation Algorithm:
